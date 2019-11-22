@@ -9,8 +9,8 @@
  * http://creativecommons.org/licenses/by-nc-sa/4.0/.
  *
  * Submission author
- * UBIT:
- * Person#:
+ * UBIT: garyfeng
+ * Person#: 52042102
  *
  * Collaborators (include UBIT name of each, comma separated):
  * UBIT:
@@ -24,7 +24,24 @@ import scala.reflect.ClassTag
 
 object TreeUtilities {
   def buildHeapTreeFromHeapArray[A](heapArray: Array[A]): Tree[A] = {
-    Empty
+    if (heapArray.isEmpty){
+      Empty
+    } else {
+      for (i <- heapArray.length-1 to 0 by -1){
+        if ((i+1) % 2 == 0){ //left
+          println(heapArray(i))
+          val parentIndex = (i - 1)/2
+          val newNode: Node[A] = new Node[A](heapArray(i), Empty, Empty)
+        }
+        if ((i+2) % 2 == 0){ //right
+          println(heapArray(i))
+          val parentIndex = (i - 2)/2
+          val newNode: Node[A] = new Node[A](heapArray(i), Empty, Empty)
+
+        }
+      }
+      Empty
+    }
   }
 
   def flattenHeapTreeToHeapArray[A: ClassTag](root: Tree[A]): Array[A] = {
